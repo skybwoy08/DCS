@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Payment from "./pages/Payment.jsx";
 
 function App() {
   const isLoggedIn = localStorage.getItem("user"); // simple auth check
@@ -19,6 +20,9 @@ function App() {
           path="/dashboard"
           element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
         />
+
+        {/* Payments Route */}
+        <Route path="/payments" element={<Payment />} />
       </Routes>
     </Router>
   );
