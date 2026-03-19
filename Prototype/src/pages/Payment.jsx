@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/Payment.css';
-
+import { useNavigate } from "react-router-dom";
 // ─────────────────────────── MOCK DATA ───────────────────────────
 const DECISION_RULES = [
   { trigger: 'Rainfall > 80mm', payout: '₹500', region: 'Chennai', status: 'triggered' },
@@ -53,6 +53,7 @@ function StatusBadge({ status }) {
 // ─────────────────────────── MAIN COMPONENT ───────────────────────────
 
 export default function Payment() {
+  const navigate = useNavigate();
   const [streamMode, setStreamMode] = useState('hourly');
   const [expandedBatch, setExpandedBatch] = useState(null);
 
@@ -281,7 +282,11 @@ export default function Payment() {
           </svg>
         </div>
         {/* Analytics */}
-        <div className="flex flex-col items-center opacity-40">
+        {/* Analytics */}
+        <div
+          className="flex flex-col items-center opacity-40"
+          onClick={() => navigate("/dashboard")}
+        >
           <svg className="nav-icon" fill="currentColor" viewBox="0 0 24 24">
             <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
           </svg>
